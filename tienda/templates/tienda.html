@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda | Music Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background:#111317; color:#e2e2e8; font-family:Inter,system-ui,sans-serif }
+    .accent { color:#ffc174 }
+    .panel { background:#1a1c20; border:1px solid #534434 }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="border-b border-[#534434] bg-[#0c0e12]">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+      <a href="index.html" class="text-xl font-bold accent">Music Pro</a>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="sucursales.html" class="hover:text-[#ffc174]">Sucursales</a>
+        <a href="carrito.html" class="rounded-lg bg-[#f59e0b] px-3 py-2 font-semibold text-[#472a00]">Carrito (<span id="cart-count">0</span>)</a>
+        <a href="iniciar_sesion.html" class="text-[#d8c3ad] hover:text-[#ffc174]">Ingresar</a>
+      </div>
+    </nav>
+  </header>
+  <main class="mx-auto max-w-6xl px-5 py-10">
+    <section class="mb-10">
+      <p class="mb-2 text-xs uppercase tracking-widest accent">Instrumentos y audio profesional</p>
+      <h1 class="text-4xl font-bold">Compra tu próximo instrumento</h1>
+      <p class="mt-3 max-w-2xl text-[#d8c3ad]">Explora el catálogo y agrega productos al carrito de demostración, guardado sólo en este navegador.</p>
+    </section>
+    <p id="cart-status" class="mb-5 hidden rounded-lg border border-[#56e5a9]/40 bg-[#56e5a9]/10 px-4 py-3 text-sm text-[#56e5a9]" role="status"></p>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="panel rounded-xl p-5" data-product-id="guitarra-stage">
+        <img src="assets/products/guitarra electrica mp-stage.png" alt="Guitarra eléctrica MP-Stage" class="mb-5 h-40 w-full rounded-lg object-cover">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Cuerdas</p><h2 class="mt-2 text-xl font-bold">Guitarra eléctrica MP-Stage</h2>
+        <p class="mt-2 min-h-12 text-sm text-[#d8c3ad]">Guitarra eléctrica para práctica, escenario y estudio.</p>
+        <div class="mt-5 flex items-center justify-between"><strong class="text-xl accent">$249.990</strong><span class="text-xs text-[#a9a5a0]">En stock</span></div>
+        <button class="add-to-cart mt-4 w-full rounded-lg bg-[#f59e0b] px-4 py-3 font-semibold text-[#472a00]" type="button">Agregar al carrito</button>
+      </article>
+      <article class="panel rounded-xl p-5" data-product-id="microfono-vocal">
+        <img src="assets/products/microfono dinamico vocal pro.png" alt="Micrófono dinámico Vocal Pro" class="mb-5 h-40 w-full rounded-lg object-cover">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Micrófonos</p><h2 class="mt-2 text-xl font-bold">Micrófono dinámico Vocal Pro</h2>
+        <p class="mt-2 min-h-12 text-sm text-[#d8c3ad]">Micrófono dinámico para voz y presentaciones en vivo.</p>
+        <div class="mt-5 flex items-center justify-between"><strong class="text-xl accent">$59.990</strong><span class="text-xs text-[#a9a5a0]">En stock</span></div>
+        <button class="add-to-cart mt-4 w-full rounded-lg bg-[#f59e0b] px-4 py-3 font-semibold text-[#472a00]" type="button">Agregar al carrito</button>
+      </article>
+      <article class="panel rounded-xl p-5" data-product-id="piano-stage-88">
+        <img src="assets/products/piano digital stage 88.png" alt="Piano digital Stage 88" class="mb-5 h-40 w-full rounded-lg object-cover">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Teclados</p><h2 class="mt-2 text-xl font-bold">Piano digital Stage 88</h2>
+        <p class="mt-2 min-h-12 text-sm text-[#d8c3ad]">Piano digital de 88 teclas para estudio y presentaciones.</p>
+        <div class="mt-5 flex items-center justify-between"><strong class="text-xl accent">$499.990</strong><span class="text-xs text-[#a9a5a0]">En stock</span></div>
+        <button class="add-to-cart mt-4 w-full rounded-lg bg-[#f59e0b] px-4 py-3 font-semibold text-[#472a00]" type="button">Agregar al carrito</button>
+      </article>
+      <article class="panel rounded-xl p-5" data-product-id="bateria-beat-kit">
+        <img src="assets/products/bateria electronica beat kit.png" alt="Batería electrónica Beat Kit" class="mb-5 h-40 w-full rounded-lg object-cover">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Percusión</p><h2 class="mt-2 text-xl font-bold">Batería electrónica Beat Kit</h2>
+        <p class="mt-2 min-h-12 text-sm text-[#d8c3ad]">Kit electrónico compacto para práctica y grabación.</p>
+        <div class="mt-5 flex items-center justify-between"><strong class="text-xl accent">$389.990</strong><span class="text-xs text-[#a9a5a0]">En stock</span></div>
+        <button class="add-to-cart mt-4 w-full rounded-lg bg-[#f59e0b] px-4 py-3 font-semibold text-[#472a00]" type="button">Agregar al carrito</button>
+      </article>
+      <article class="panel rounded-xl p-5" data-product-id="interfaz-studio-4">
+        <img src="assets/products/interfaz de audio studio 4.png" alt="Interfaz de audio Studio 4" class="mb-5 h-40 w-full rounded-lg object-cover">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Estudio</p><h2 class="mt-2 text-xl font-bold">Interfaz de audio Studio 4</h2>
+        <p class="mt-2 min-h-12 text-sm text-[#d8c3ad]">Interfaz de cuatro canales para grabación y producción.</p>
+        <div class="mt-5 flex items-center justify-between"><strong class="text-xl accent">$179.990</strong><span class="text-xs text-[#a9a5a0]">En stock</span></div>
+        <button class="add-to-cart mt-4 w-full rounded-lg bg-[#f59e0b] px-4 py-3 font-semibold text-[#472a00]" type="button">Agregar al carrito</button>
+      </article>
+      <article class="panel rounded-xl p-5" data-product-id="audifonos-monitor">
+        <img src="assets/products/audifonos monitor mx.png" alt="Audífonos de monitoreo MX" class="mb-5 h-40 w-full rounded-lg object-cover">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Monitoreo</p><h2 class="mt-2 text-xl font-bold">Audífonos de monitoreo MX</h2>
+        <p class="mt-2 min-h-12 text-sm text-[#d8c3ad]">Audífonos cerrados para monitoreo y escucha de referencia.</p>
+        <div class="mt-5 flex items-center justify-between"><strong class="text-xl accent">$89.990</strong><span class="text-xs text-[#a9a5a0]">En stock</span></div>
+        <button class="add-to-cart mt-4 w-full rounded-lg bg-[#f59e0b] px-4 py-3 font-semibold text-[#472a00]" type="button">Agregar al carrito</button>
+      </article>
+    </div>
+    <p class="mt-8 text-xs leading-5 text-[#a9a5a0]">Catálogo y precios de demostración. Esta página no consulta inventario real ni procesa pagos.</p>
+  </main>
+  <script>
+    const cartKey = 'musicProCart';
+    const products = {
+      'guitarra-stage': { name:'Guitarra eléctrica MP-Stage', price:249990, image:'assets/products/guitarra electrica mp-stage.png' },
+      'microfono-vocal': { name:'Micrófono dinámico Vocal Pro', price:59990, image:'assets/products/microfono dinamico vocal pro.png' },
+      'piano-stage-88': { name:'Piano digital Stage 88', price:499990, image:'assets/products/piano digital stage 88.png' },
+      'bateria-beat-kit': { name:'Batería electrónica Beat Kit', price:389990, image:'assets/products/bateria electronica beat kit.png' },
+      'interfaz-studio-4': { name:'Interfaz de audio Studio 4', price:179990, image:'assets/products/interfaz de audio studio 4.png' },
+      'audifonos-monitor': { name:'Audífonos de monitoreo MX', price:89990, image:'assets/products/audifonos monitor mx.png' }
+    };
+    const status = document.getElementById('cart-status');
+    function readCart() {
+      try {
+        const cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+        if (!Array.isArray(cart)) throw new TypeError('El carrito guardado no tiene el formato esperado.');
+        return cart.filter(item => products[item.id] && Number.isInteger(item.quantity) && item.quantity > 0);
+      } catch (error) {
+        console.error('No se pudo leer el carrito de demostración.', error);
+        status.textContent = 'No se pudo leer el carrito guardado en este navegador.';
+        status.classList.remove('hidden');
+        return [];
+      }
+    }
+    function updateCartCount() {
+      const count = readCart().reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+    document.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => {
+      const id = button.closest('[data-product-id]').dataset.productId;
+      const cart = readCart();
+      const item = cart.find(entry => entry.id === id);
+      if (item) item.quantity += 1;
+      else cart.push({ id, quantity:1 });
+      try {
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+        updateCartCount();
+        status.textContent = `${products[id].name} se agregó al carrito de demostración.`;
+        status.classList.remove('hidden');
+      } catch (error) {
+        console.error('No se pudo guardar el carrito de demostración.', error);
+        status.textContent = 'No se pudo guardar el carrito en este navegador.';
+        status.classList.remove('hidden');
+      }
+    }));
+    updateCartCount();
+  </script>
+</body>
+</html>

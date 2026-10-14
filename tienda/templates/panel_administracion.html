@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestión administrativa | Music Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background:#111317; color:#e2e2e8; font-family:Inter,system-ui,sans-serif }
+    .accent { color:#ffc174 }
+    .panel { background:#1a1c20; border:1px solid #534434 }
+    .admin-table th, .admin-table td { padding:.8rem .75rem; text-align:left }
+    .admin-table tbody tr { border-top:1px solid #3b332b }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="border-b border-[#534434] bg-[#0c0e12]">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+      <a href="index.html" class="text-xl font-bold accent">Music Pro</a>
+      <div class="flex items-center gap-4 text-sm"><a href="tienda.html" class="hover:text-[#ffc174]">Tienda</a><a href="sucursales.html" class="hover:text-[#ffc174]">Sucursales</a><a href="iniciar_sesion.html" class="text-[#d8c3ad] hover:text-[#ffc174]">Ingresar</a></div>
+    </nav>
+  </header>
+  <main class="mx-auto max-w-6xl px-5 py-10">
+    <div class="rounded-2xl border border-[#534434] bg-[#15171b] p-5 shadow-2xl md:p-8">
+      <div class="flex flex-col justify-between gap-5 border-b border-[#534434] pb-7 md:flex-row md:items-end">
+        <div><p class="text-xs font-bold uppercase tracking-[.22em] accent">Music Pro / Administración</p><h1 class="mt-2 text-3xl font-bold md:text-4xl">Gestión de la tienda</h1><p class="mt-2 text-[#d8c3ad]">Resumen visual de productos, pedidos y solicitudes.</p></div>
+        <div class="flex flex-wrap gap-2"><a href="panel_bodega.html" class="rounded-lg border border-[#ffc174]/50 px-4 py-2 text-sm font-semibold accent">Vista de bodega</a><a href="index.html" class="rounded-lg bg-[#f59e0b] px-4 py-2 text-sm font-semibold text-[#472a00]">Volver al inicio</a></div>
+      </div>
+      <p class="mt-6 rounded-lg border border-[#ffc174]/30 bg-[#ffc174]/10 px-4 py-3 text-sm text-[#ffc174]">Datos de demostración. Esta página no administra inventario real ni guarda cambios.</p>
+      <div class="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        <div class="panel rounded-xl p-5"><p class="text-sm text-[#a9a5a0]">Productos activos</p><p class="mt-2 text-3xl font-bold accent">24</p></div>
+        <div class="panel rounded-xl p-5"><p class="text-sm text-[#a9a5a0]">Stock bajo</p><p class="mt-2 text-3xl font-bold text-[#ffb4ab]">3</p></div>
+        <div class="panel rounded-xl p-5"><p class="text-sm text-[#a9a5a0]">Nuevas compras</p><p class="mt-2 text-3xl font-bold text-[#56e5a9]">5</p></div>
+        <div class="panel rounded-xl p-5"><p class="text-sm text-[#a9a5a0]">En despacho</p><p class="mt-2 text-3xl font-bold accent">2</p></div>
+        <div class="panel rounded-xl p-5"><p class="text-sm text-[#a9a5a0]">Solicitudes de franquicia</p><p class="mt-2 text-3xl font-bold text-[#56e5a9]">1</p></div>
+      </div>
+      <div class="mt-8 grid gap-6 xl:grid-cols-2">
+        <section class="panel rounded-xl p-5">
+          <div class="flex items-center justify-between gap-3"><div><p class="text-xs uppercase tracking-widest text-[#56e5a9]">Productos</p><h2 class="mt-1 text-xl font-bold">Inventario de ejemplo</h2></div><a href="tienda.html" class="text-sm font-semibold accent hover:underline">Ver tienda</a></div>
+          <div class="mt-5 overflow-x-auto"><table class="admin-table w-full min-w-[560px] text-sm"><thead><tr class="text-[#a9a5a0]"><th>Producto</th><th>Stock</th><th>Activo</th><th>Acción</th></tr></thead><tbody>
+            <tr><td><span class="font-semibold">Guitarra eléctrica MP-Stage</span><br><span class="text-xs text-[#a9a5a0]">Cuerdas</span></td><td class="font-bold text-[#56e5a9]">12</td><td class="text-[#56e5a9]">Sí</td><td><button type="button" class="rounded-md border border-[#534434] px-3 py-1.5 text-xs text-[#a9a5a0]" disabled>Edición no disponible</button></td></tr>
+            <tr><td><span class="font-semibold">Micrófono dinámico Vocal Pro</span><br><span class="text-xs text-[#a9a5a0]">Micrófonos</span></td><td class="font-bold text-[#ffb4ab]">2</td><td class="text-[#56e5a9]">Sí</td><td><button type="button" class="rounded-md border border-[#534434] px-3 py-1.5 text-xs text-[#a9a5a0]" disabled>Edición no disponible</button></td></tr>
+            <tr><td><span class="font-semibold">Piano digital Stage 88</span><br><span class="text-xs text-[#a9a5a0]">Teclados</span></td><td class="font-bold text-[#56e5a9]">7</td><td class="text-[#56e5a9]">Sí</td><td><button type="button" class="rounded-md border border-[#534434] px-3 py-1.5 text-xs text-[#a9a5a0]" disabled>Edición no disponible</button></td></tr>
+          </tbody></table></div>
+        </section>
+        <section class="panel rounded-xl p-5">
+          <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Pedidos</p><h2 class="mt-1 text-xl font-bold">Recepción y despacho de ejemplo</h2>
+          <div class="mt-5 space-y-3">
+            <article class="rounded-lg border border-[#3b332b] bg-[#111317] p-4"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="font-bold">Pedido #1001</p><p class="mt-1 text-xs text-[#a9a5a0]">Retiro en sucursal · Pendiente</p></div><strong class="accent">$249.990</strong></div></article>
+            <article class="rounded-lg border border-[#3b332b] bg-[#111317] p-4"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="font-bold">Pedido #1002</p><p class="mt-1 text-xs text-[#a9a5a0]">Despacho a domicilio · En preparación</p></div><strong class="accent">$59.990</strong></div></article>
+          </div>
+        </section>
+      </div>
+      <section class="panel mt-6 rounded-xl p-5">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Franquicias</p><h2 class="mt-1 text-xl font-bold">Solicitud de ejemplo</h2>
+        <article class="mt-5 max-w-xl rounded-lg border border-[#3b332b] bg-[#111317] p-4"><h3 class="font-bold">Solicitud de demostración</h3><p class="mt-2 text-sm accent">Santiago</p><a class="mt-1 block text-sm text-[#d8c3ad] hover:text-[#ffc174]" href="mailto:franquicias@musicpro.cl">franquicias@musicpro.cl</a><p class="mt-3 text-sm leading-6 text-[#a9a5a0]">Interés en conocer el modelo de franquicia Music Pro.</p></article>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

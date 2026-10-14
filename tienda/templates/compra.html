@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout | Music Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background:#111317; color:#e2e2e8; font-family:Inter,system-ui,sans-serif }
+    .accent { color:#ffc174 }
+    .panel { background:#1a1c20; border:1px solid #534434 }
+    .field { width:100%; border:1px solid #534434; border-radius:8px; background:#111317; padding:.7rem; color:#e2e2e8 }
+    .field:focus { outline:2px solid #f59e0b }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="border-b border-[#534434] bg-[#0c0e12]">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+      <a href="index.html" class="text-xl font-bold accent">Music Pro</a>
+      <div class="flex items-center gap-4 text-sm"><a href="tienda.html" class="hover:text-[#ffc174]">Tienda</a><a href="carrito.html" class="hover:text-[#ffc174]">Volver al carrito</a></div>
+    </nav>
+  </header>
+  <main class="mx-auto max-w-6xl px-5 py-10">
+    <div class="mb-8">
+      <p class="text-xs uppercase tracking-widest accent">Checkout de demostración</p>
+      <h1 class="mt-2 text-4xl font-bold">Datos de entrega y pago</h1>
+      <p class="mt-3 max-w-3xl text-[#d8c3ad]">El despacho a domicilio tiene un costo referencial de $3.990; el retiro en sucursal no tiene costo.</p>
+    </div>
+    <p id="cart-status" class="mb-5 hidden rounded-lg border border-red-300/40 bg-red-300/10 px-4 py-3 text-sm text-red-200" role="status"></p>
+    <div class="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <form id="checkout-form" class="panel rounded-xl p-6">
+        <div class="mb-6 border-b border-[#534434] pb-4">
+          <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Datos del comprador</p>
+          <p class="mt-1 text-sm text-[#d8c3ad]">Completa los datos para revisar el formulario.</p>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <label class="block"><span class="mb-2 block text-sm font-semibold">Nombre</span><input class="field" name="first_name" autocomplete="given-name" required></label>
+          <label class="block"><span class="mb-2 block text-sm font-semibold">Apellido</span><input class="field" name="last_name" autocomplete="family-name" required></label>
+          <label class="block"><span class="mb-2 block text-sm font-semibold">Correo electrónico</span><input class="field" name="email" type="email" autocomplete="email" required></label>
+          <label class="block"><span class="mb-2 block text-sm font-semibold">RUT</span><input class="field" id="rut" name="rut" autocomplete="off" inputmode="text" required></label>
+          <label class="block"><span class="mb-2 block text-sm font-semibold">Teléfono</span><input class="field" name="phone" type="tel" autocomplete="tel" required></label>
+          <label class="block"><span class="mb-2 block text-sm font-semibold">Modalidad de entrega</span>
+            <select class="field" id="delivery-type" name="delivery_type"><option value="pickup">Retiro en sucursal — gratis</option><option value="delivery">Despacho a domicilio — $3.990</option></select>
+          </label>
+          <label id="branch-field" class="block sm:col-span-2"><span class="mb-2 block text-sm font-semibold">Sucursal de retiro</span>
+            <select class="field" id="branch" name="branch" required><option value="">Selecciona una sucursal</option><option>Providencia, Santiago</option><option>Viña del Mar</option><option>Concepción</option></select>
+          </label>
+          <label id="address-field" class="hidden block sm:col-span-2"><span class="mb-2 block text-sm font-semibold">Dirección de despacho</span><input class="field" id="address" name="address" autocomplete="street-address"></label>
+          <label class="block sm:col-span-2"><span class="mb-2 block text-sm font-semibold">Método de pago</span>
+            <select class="field" name="payment_method"><option>Tarjeta de crédito o débito</option><option>Transferencia bancaria</option></select>
+          </label>
+          <label class="block sm:col-span-2"><span class="mb-2 block text-sm font-semibold">Comentario de entrega (opcional)</span><textarea class="field" name="delivery_comment" rows="3"></textarea></label>
+        </div>
+        <button id="confirm-order" class="mt-6 w-full rounded-lg bg-[#f59e0b] px-4 py-3 font-semibold text-[#472a00]" type="submit">Revisar pedido</button>
+        <p id="form-status" class="mt-4 hidden rounded-lg border border-[#ffc174]/40 bg-[#ffc174]/10 px-4 py-3 text-sm text-[#ffc174]" role="status"></p>
+        <p class="mt-4 text-xs leading-5 text-[#a9a5a0]">Demostración estática: los datos no se envían ni se almacenan y no se realiza ningún pago.</p>
+      </form>
+      <aside class="panel h-fit rounded-xl p-6 lg:sticky lg:top-6">
+        <p class="text-xs uppercase tracking-widest text-[#56e5a9]">Resumen de compra</p>
+        <h2 class="mt-2 text-xl font-bold">Tu pedido</h2>
+        <div id="order-items" class="mt-3"></div>
+        <div class="mt-5 flex justify-between"><strong>Subtotal</strong><strong id="checkout-subtotal" class="accent">$0</strong></div>
+        <div class="mt-3 flex justify-between text-sm"><span>Despacho</span><strong id="checkout-shipping" class="accent">$0</strong></div>
+        <div class="mt-4 flex justify-between border-t border-[#534434] pt-4 text-lg"><strong>Total</strong><strong id="checkout-total" class="accent">$0</strong></div>
+        <p class="mt-4 rounded-lg bg-[#0c0e12] px-3 py-3 text-xs leading-5 text-[#d8c3ad]">El costo mostrado es referencial y no representa una transacción real.</p>
+      </aside>
+    </div>
+  </main>
+  <script>
+    const cartKey = 'musicProCart';
+    const products = {
+      'guitarra-stage': { name:'Guitarra eléctrica MP-Stage', price:249990 },
+      'microfono-vocal': { name:'Micrófono dinámico Vocal Pro', price:59990 },
+      'piano-stage-88': { name:'Piano digital Stage 88', price:499990 },
+      'bateria-beat-kit': { name:'Batería electrónica Beat Kit', price:389990 },
+      'interfaz-studio-4': { name:'Interfaz de audio Studio 4', price:179990 },
+      'audifonos-monitor': { name:'Audífonos de monitoreo MX', price:89990 }
+    };
+    const currency = new Intl.NumberFormat('es-CL', { style:'currency', currency:'CLP', maximumFractionDigits:0 });
+    const cartStatus = document.getElementById('cart-status');
+    let cart = [];
+    try {
+      const savedCart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+      if (!Array.isArray(savedCart)) throw new TypeError('El carrito guardado no tiene el formato esperado.');
+      cart = savedCart.filter(item => products[item.id] && Number.isInteger(item.quantity) && item.quantity > 0);
+    } catch (error) {
+      console.error('No se pudo leer el carrito de demostración.', error);
+      cartStatus.textContent = 'No se pudo leer el carrito guardado en este navegador.';
+      cartStatus.classList.remove('hidden');
+    }
+    const itemsElement = document.getElementById('order-items');
+    let subtotal = 0;
+    for (const item of cart) {
+      const product = products[item.id];
+      subtotal += product.price * item.quantity;
+      const line = document.createElement('div');
+      line.className = 'flex justify-between gap-3 border-b border-[#534434] py-3 text-sm';
+      const title = document.createElement('span');
+      title.textContent = `${product.name} × ${item.quantity}`;
+      const price = document.createElement('strong');
+      price.className = 'shrink-0 accent';
+      price.textContent = currency.format(product.price * item.quantity);
+      line.append(title, price);
+      itemsElement.append(line);
+    }
+    if (cart.length === 0) {
+      itemsElement.textContent = 'No hay productos en el carrito.';
+      document.getElementById('confirm-order').disabled = true;
+      document.getElementById('confirm-order').classList.add('cursor-not-allowed', 'opacity-50');
+      cartStatus.textContent = 'El carrito está vacío. Agrega productos antes de continuar.';
+      cartStatus.classList.remove('hidden');
+    }
+    document.getElementById('checkout-subtotal').textContent = currency.format(subtotal);
+    const deliveryType = document.getElementById('delivery-type');
+    const branchField = document.getElementById('branch-field');
+    const branch = document.getElementById('branch');
+    const addressField = document.getElementById('address-field');
+    const address = document.getElementById('address');
+    function updateDeliveryFields() {
+      const isDelivery = deliveryType.value === 'delivery';
+      branchField.classList.toggle('hidden', isDelivery);
+      addressField.classList.toggle('hidden', !isDelivery);
+      branch.required = !isDelivery;
+      address.required = isDelivery;
+      const shipping = isDelivery ? 3990 : 0;
+      document.getElementById('checkout-shipping').textContent = currency.format(shipping);
+      document.getElementById('checkout-total').textContent = currency.format(subtotal + shipping);
+    }
+    deliveryType.addEventListener('change', updateDeliveryFields);
+    updateDeliveryFields();
+    document.getElementById('rut').addEventListener('input', event => {
+      event.target.value = event.target.value.replace(/[^0-9kK.-]/g, '');
+    });
+    document.getElementById('checkout-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const status = document.getElementById('form-status');
+      status.textContent = 'El pedido no se confirmó: esta página de demostración no envía ni almacena datos.';
+      status.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
